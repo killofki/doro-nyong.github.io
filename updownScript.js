@@ -18,7 +18,7 @@ const objects = { queryBtn, msg, stc, inpt, msgAbove, rst, msgBelow };
 
 function $( q ) { return document .querySelector( q ); } 
 
-let initGameEventHandler = queryBtn. addEventListener( "click", btnHandler ); 
+let initGameEventHandler = queryBtn .addEventListener( "click", btnHandler ); 
 
 function fadeIn( sth ) { 
 	fadeTime( sth, { add : 'active' } 
