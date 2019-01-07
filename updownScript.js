@@ -51,14 +51,12 @@ function initializeGame() {
 
 function startGame() { 
 	classCmd( queryBtn, { remove : 'deactivated' }, '추측하기' ); 
-	[ 
-		  [ msg, "텍스트 창에 추측한 숫자를 입력하고 버튼을 눌려주세요." ] 
-		, [ msgAbove, "1번째 시도입니다." ] 
-		, [ msgBelow, "" ] 
-		, [ rst, "？" ] 
-		] 
-	.forEach( ([ e, t ]) => e .innerHTML = t ) 
-		; 
+	objectsNhtml( { msg, msgAbove, msgBelow, rst }, { 
+		  msg : "텍스트 창에 추측한 숫자를 입력하고 버튼을 눌려주세요." 
+		, msgAbove : "1번째 시도입니다." 
+		, msgBelow : "" 
+		, rst : "？" 
+		} ); 
 	
 	[ atc, inpt ] .forEach( fadeIn ); 
 	gameStart = true; 
@@ -88,21 +86,37 @@ function turnPass() {
 
 function result( judge, num ) { 
 	if ( judge === true ) { 
-		rst .className = ""; 
-		rst .innerHTML = answer; 
+		classNhtml( rst, { 
+			  className : '' 
+			, innerHTML : answer 
+			} ); 
 		msgBelow .innerHTML = `정답은 ${ answer }입니다!`; 
 		
 		gameStart = false; 
-		queryBtn .innerHTML = "다시 하기"; 
-		msg .innerHTML = "게임을 다시 시작하려면 위의 버튼을 눌러주세요."; 
+		objectsNhtml( { queryBtn, msg } 
+			, { queryBtn : '디시하기' } 
+			, { msg : '게임을 다시 시작하려면 위의 버튼을 눌러주세요.' } 
+			); 
 		fadeOut( inpt ); 
 		} 
 	else { 
 		turnPass(); 
-		rst .className = `result-${ judge }`; 
-		rst .innerHTML = judge .toUpperCase(); 
+		classNhtml( rst, { 
+			  className : `result-${ judge }` 
+			, innerHTML : judge .toUpperCase() 
+			} ); 
 		msgBelow .innerHTML = `${ guess }${ choosePostposition( num ) } 아닙니다!` 
 		} 
+	} 
+
+function classNhtml( obj, { className, innerHTML } ) { 
+	Object .assign( obj, { className }, { innerHTML } ); 
+	} 
+
+function objectsNhtml( objs, ... orders ) { 
+	orders .forEach( cmdobj => Object .keys( cmdobj ) .forEach( p => 
+		objs[ p ] .innerHTML = cmdobj[ p ] 
+		) ); 
 	} 
 
 function choosePostposition( number ) { 
