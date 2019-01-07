@@ -49,8 +49,7 @@ function btnHandler() {
 function initializeGame() { 
 	fadeOut( atc ); 
 	turn = 0; 
-	queryBtn .classList .add( "deactivated" ); 
-	queryBtn .innerHTML = "기다리세요!"; 
+	classCmd( queryBtn, { add : 'deactivated' }, '기다리세요!' ); 
 	msg .innerHTML = "1부터 100까지의 숫자 중 하나를 생각하는 중입니다…"; 
 	
 	answer = Math .floor( Math .random() * 100 ) + 1; 
@@ -58,22 +57,28 @@ function initializeGame() {
 	} 
 
 function startGame() { 
-	queryBtn .classList .remove( "deactivated" ); 
-	queryBtn .innerHTML = "추측하기"; 
-	msg .innerHTML = "텍스트 창에 추측한 숫자를 입력하고 버튼을 눌려주세요."; 
-	msgAbove .innerHTML = "1번째 시도입니다."; 
-	msgBelow	.innerHTML = ""; 
-	rst .innerHTML = "？"; 
+	classCmd( queryBtn, { remove : 'deactivated' }, '추측하기' ); 
+	[ 
+		  [ msg, "텍스트 창에 추측한 숫자를 입력하고 버튼을 눌려주세요." ] 
+		, [ msgAbove, "1번째 시도입니다." ] 
+		, [ msgBelow, "" ] 
+		, [ rst, "？" ] 
+		] 
+	.forEach( ([ e, t ]) => e .innerHTML = t ) 
+		; 
 	
 	fadeIn( atc ); 
 	fadeIn( inpt ); 
 	gameStart = true; 
 	
-	inpt .onkeydown = ({ keyCode }) => { 
-		   keyCode === 13 
-		&& btnHandler() 
-			; 
-		}; 
+	inpt .onkeydown = ({ keyCode }) => { keyCode === 13 && btnHandler(); }; 
+	} 
+
+function classCmd( obj, cmdobj, ... ar ) { 
+	Object .keys( cmdobj ) .forEach( p => 
+		obj .classList[ p ]( cmdobj[ p ] ) 
+		); 
+	ar .length && ( [ obj .innerHTML ] = ar ); 
 	} 
 
 function answering( num ) { 
