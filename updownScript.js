@@ -99,11 +99,11 @@ function turnPass() {
 
 function result( judge, num ) { 
 	if ( judge === true ) { 
-		Object .assign( rst 
-			, { className : '' } 
-			, { innerHTML : answer } 
+		rst .className = ''; 
+		objectsNhtml( objects 
+			, { rst : answer } 
+			, { msgBelow : `정답은 ${ answer }입니다!` } 
 			); 
-		objectsNhtml( objects, { msgBelow : `정답은 ${ answer }입니다!` } ); 
 		
 		gameStart = false; 
 		objectsNhtml( objects 
@@ -114,11 +114,11 @@ function result( judge, num ) {
 		} 
 	else { 
 		turnPass(); 
-		Object .assign( rst 
-			, { className : `result-${ judge }` } 
-			, { innerHTML : judge .toUpperCase() } 
-			); 
-		objectsNhtml( objects, { msgBelow : `${ guess }${ choosePostposition( num ) } 아닙니다!` } );  
+		rst .className = `result-${ judge }`; 
+		objectsNhtml( objects 
+			, { rst : judge .toUpperCase() } 
+			, { msgBelow : `${ guess }${ choosePostposition( num ) } 아닙니다!` } 
+			);  
 		} 
 	} 
 
