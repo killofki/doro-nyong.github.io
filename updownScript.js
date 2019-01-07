@@ -81,15 +81,10 @@ function answering( num ) {
 		return; 
 		} 
 	// else { 
-	if ( answer === num ) { 
-		result( true, num ); 
-		} 
-	else if ( answer > num ) { 
-		result( 'up', num ); 
-		} 
-	else { 
-		result( 'down', num ); 
-		} 
+	  answer === num ? result( true, num ) 
+	: answer > num ? result( 'up', num ) 
+	: result( 'down', num ) 
+		; 
 		// } 
 	} 
 
