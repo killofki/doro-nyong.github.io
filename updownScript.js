@@ -46,7 +46,7 @@ function btnHandler() {
 	  gameStart ? ( 
 		  guess = parseInt( inpt .value ) 
 		, ( isNaN( guess ) || guess < 1 || guess > 100 ) ? 
-			( msg .innerHTML = "1부터 100까지의 숫자 중 하나를 입력해주세요!" ) 
+			objectsNhtml( objects, { msg : "1부터 100까지의 숫자 중 하나를 입력해주세요!" } ) 
 		: ( inpt .value = "", answering( guess ) ) 
 	: initializeGame() 
 		; 
@@ -56,7 +56,7 @@ function initializeGame() {
 	fadeOut( atc ); 
 	turn = 0; 
 	classCmd( queryBtn, { add : 'deactivated' }, '기다리세요!' ); 
-	msg .innerHTML = "1부터 100까지의 숫자 중 하나를 생각하는 중입니다…"; 
+	objectsNhtml( objects, { msg :  "1부터 100까지의 숫자 중 하나를 생각하는 중입니다…" } ); 
 	
 	answer = Math .floor( Math .random() * 100 ) + 1; 
 	setTimeout( startGame, 1000 ); 
@@ -94,7 +94,7 @@ function answering( num ) {
 
 function turnPass() { 
 	turn += 1; 
-	msgAbove .innerHTML = `${ turn }번째 시도입니다.`; 
+	objectsNhtml( objects, { msgAbove : `${ turn }번째 시도입니다.` } ); 
 	} 
 
 function result( judge, num ) { 
@@ -103,7 +103,7 @@ function result( judge, num ) {
 			, { className : '' } 
 			, { innerHTML : answer } 
 			); 
-		msgBelow .innerHTML = `정답은 ${ answer }입니다!`; 
+		objectsNhtml( objects, { msgBelow : `정답은 ${ answer }입니다!` } ); 
 		
 		gameStart = false; 
 		objectsNhtml( objects 
@@ -118,7 +118,7 @@ function result( judge, num ) {
 			, { className : `result-${ judge }` } 
 			, { innerHTML : judge .toUpperCase() } 
 			); 
-		msgBelow .innerHTML = `${ guess }${ choosePostposition( num ) } 아닙니다!` 
+		objectsNhtml( objects, { msgBelow : `${ guess }${ choosePostposition( num ) } 아닙니다!` } );  
 		} 
 	} 
 
