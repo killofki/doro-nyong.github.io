@@ -2,9 +2,9 @@
 | JavaScript로 만드는 Up and Down CSS | 
 |                       - Doro-nyong | 
 \************************************/ 
- 
+
 /* 0. Basic Settings */ 
- 
+
 body { 
 	position: relative; 
 	font-family: 'Noto Sans KR', sans-serif; 
@@ -13,10 +13,10 @@ body {
 	margin: 0; padding: 0; 
 	height: 100vh; 
 	} 
- 
+
 .active { display: block; } 
 .show { opacity: 1; } 
- 
+
 input { 
 	display: none; 
 	opacity: 0; 
@@ -33,45 +33,45 @@ input {
 	border-radius: 8px; 
 	line-height: 36px; 
 	} 
- 
+
 button { 
-    font-family: 'Noto Sans KR', sans-serif; 
-    font-size: 1rem; 
-    padding: 0; 
-    height: 48px; 
-    line-height: 44px; 
- 
-    background: rgb(76, 241, 188); 
-    border-radius: 8px; 
-    border: 0; 
-    border-bottom: 4px solid rgb(1, 194, 182); 
-    transition: .1s; 
+	font-family: 'Noto Sans KR', sans-serif; 
+	font-size: 1rem; 
+	padding: 0; 
+	height: 48px; 
+	line-height: 44px; 
+	
+	background: rgb(76, 241, 188); 
+	border-radius: 8px; 
+	border: 0; 
+	border-bottom: 4px solid rgb(1, 194, 182); 
+	transition: .1s; 
 	} 
- 
+
 button:hover { 
-    background: rgb(1, 194, 182); 
-    border-bottom: 3px solid rgb(1, 194, 182); 
+	background: rgb(1, 194, 182); 
+	border-bottom: 3px solid rgb(1, 194, 182); 
 	} 
- 
+
 button.deactivated { 
     opacity: .5; 
 	} 
- 
- 
+
+
 /* 1. Section */ 
- 
+
 section { 
     box-sizing: border-box; 
- 
+
     position: absolute; 
     background: white; 
     padding: 24px; 
- 
+
     border-radius: 24px; 
     border-bottom: 4px solid rgb(1, 194, 182); 
     text-align: center; 
 	} 
- 
+
 @media screen and (min-width: 768px) { 
     section { 
         top: 50vh; left: 50%; 
@@ -79,63 +79,63 @@ section {
         width: 576px; height: 544px; 
     } 
 	} 
- 
+
 @media screen and (max-width: 767px) { 
     section { 
         top: 96px; bottom: 96px; 
         left: 24px; right: 24px; 
- 
+
         min-width: 528px; 
         min-height: 460px; 
     } 
 	} 
- 
- 
+
+
 /* 2. Gaming area */ 
- 
+
 section > h1 { 
     font-weight: 900; 
     font-size: 1.5rem; 
     line-height: 1.5rem; 
     margin: 0 0 16px; 
 	} 
- 
+
 section > p { 
     margin: 0 0 16px; 
 	} 
- 
+
 article { 
     display: none; 
     opacity: 0; 
     transition: .2s; 
 	} 
- 
+
 #result { 
     width: 352px; 
     height: 144px; 
     margin: 0 auto 16px; 
     padding: 0; 
- 
+
     border-radius: 8px; 
     background: rgb(234, 234, 234); 
- 
+
     font-size: 4rem; 
     font-weight: 900; 
     line-height: 136px; 
 	} 
- 
+
 .result-up { color: rgb(255, 70, 70); } 
 .result-down { color: rgb(67, 58, 255); } 
- 
- 
+
+
 /* 3. Controller area */ 
- 
+
 #inputs { 
     position: absolute; 
     bottom: 0; left: 0; 
     width: 100%; 
 	} 
- 
+
 #inputs > button { 
     width: 128px; 
 	}
