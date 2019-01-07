@@ -1,3 +1,6 @@
+{
+/// 
+
 let answer;
 let guess;
 let turn = 0;
@@ -5,13 +8,15 @@ let gameStart = false;
 let postposition;
 
 const d = document;
-const queryBtn = d.getElementById('query'); 
-const msg = d.getElementById('msg');
-const atc = d.getElementsByTagName('article')[0];
-const inpt = d.getElementsByTagName('input')[0];
-const msgAbove = d.getElementById('message-above');
-const rst = d.getElementById('result');
-const msgBelow = d.getElementById('message-below');
+const queryBtn = $( '#query' ); 
+const msg = $( '#msg' );
+const atc = $( 'article');
+const inpt = $( 'input' );
+const msgAbove = $( '#message-above' );
+const rst = $( '#result' );
+const msgBelow = $( '#message-below' );
+
+function $( q ) { return document .querySelector( q ); } 
 
 let initGameEventHandler = queryBtn.addEventListener("click", btnHandler);
 
@@ -118,3 +123,5 @@ function choosePostposition(number) {
 	}
 
 // src from https://doro-nyong.github.io/up-and-down-js/ 
+/// 
+} 
