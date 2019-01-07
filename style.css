@@ -48,7 +48,7 @@ button {
 	transition : .1s; 
 	} 
 
-button :hover { 
+button:hover { 
 	background : rgb( 1, 194, 182 ); 
 	border-bottom : 3px solid rgb( 1, 194, 182 ); 
 	} 
