@@ -20,13 +20,13 @@ function $( q ) { return document .querySelector( q ); }
 let initGameEventHandler = queryBtn. addEventListener( "click", btnHandler ); 
 
 function fadeIn(sth) { 
-	sth .classList .add( "active" ); 
-	setTimeout( q => { sth .classList .add( "show" ) }, 20 ); 
+	classCmd( sth, { add : 'active' } ); 
+	setTimeout( q => classCmd( sth, { add, 'show '} ), 20 ); 
 	} 
 
 function fadeOut(sth) { 
-	sth .classList .remove( "show" ); 
-	setTimeout( q => { sth .classList .remove( "active" ) }, 200 ); 
+	classCmd( sth, { remove : 'show' } ); 
+	setTimeout( q => classCmd( sth, { remove : 'active' } ), 200 ); 
 	} 
 
 function btnHandler() { 
