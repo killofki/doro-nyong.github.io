@@ -25,7 +25,7 @@ function fadeIn(sth) {
 	} 
 
 function fadeOut(sth) { 
-	sth .classList .remove("show"); 
+	sth .classList .remove( "show" ); 
 	setTimeout( q => { sth .classList .remove( "active" ) }, 200 ); 
 	} 
 
