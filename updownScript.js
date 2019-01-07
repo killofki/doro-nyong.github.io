@@ -79,7 +79,6 @@ function answering( num ) {
 	: answer > num ? result( 'up', num ) 
 	: result( 'down', num ) 
 		; 
-		// } 
 	} 
 
 function turnPass() { 
