@@ -119,12 +119,7 @@ function result( judge, num ) {
 
 function choosePostposition( number ) { 
 	noun = parseInt( number ) % 10; 
-	if ( noun === 2 || noun === 4 || noun === 5 || noun === 9 ) { 
-		return "가"; 
-		} 
-	else { 
-		return "이"; 
-		} 
+	return [ 2, 4, 5, 9 ] .some( n => n === noun ) ? '가' : '이'; 
 	} 
 
 // src from https://doro-nyong.github.io/up-and-down-js/ 
