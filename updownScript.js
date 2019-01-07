@@ -77,9 +77,8 @@ function startGame() {
 	} 
 
 function answering( num ) { 
-	if ( num === "" ) { 
-		return; 
-		} 
+	if ( num === "" ) 
+		{ return; } 
 	// else { 
 	  answer === num ? result( true, num ) 
 	: answer > num ? result( 'up', num ) 
