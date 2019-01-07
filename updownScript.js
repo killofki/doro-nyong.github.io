@@ -84,7 +84,7 @@ function answering( num ) {
 		if ( answer === num ) { 
 			result( true, num ); 
 			} 
-		else if (answer > num) { 
+		else if ( answer > num ) { 
 			result( 'up', num ); 
 			} 
 		else { 
