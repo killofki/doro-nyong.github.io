@@ -28,10 +28,13 @@ function fadeOut( sth ) {
 	fadeTime( sth, { remove : 'show' }, 200, { remove : 'active' } ); 
 	} 
 
-function fadeTime( obj, preCmd, delay, timeoutCmd ) { 
+async function fadeTime( obj, preCmd, delay, timeoutCmd ) { 
 	classCmd( sth, preCmd ); 
-	setTimeout( q => classCmd( sth, timeoutCmd ), 200 ); 
+	await sleep( delay ); 
+	classCmd( sth, timeoutCmd ); 
 	} 
+
+function sleep( delay ) { return new Promise( res => setTimeout( q => res(), delay ) ); } 
 
 function btnHandler() { 
 	  gameStart ? ( 
