@@ -99,8 +99,8 @@ function turnPass() {
 
 function result( judge, num ) { 
 	if ( judge === true ) { 
-		Object .assign( rst, 
-			  { className : '' } 
+		Object .assign( rst
+			, { className : '' } 
 			, { innerHTML : answer } 
 			); 
 		msgBelow .innerHTML = `정답은 ${ answer }입니다!`; 
@@ -114,8 +114,8 @@ function result( judge, num ) {
 		} 
 	else { 
 		turnPass(); 
-		Object .assign( rst, 
-			  { className : `result-${ judge }` } 
+		Object .assign( rst
+			, { className : `result-${ judge }` } 
 			, { innerHTML : judge .toUpperCase() } 
 			); 
 		msgBelow .innerHTML = `${ guess }${ choosePostposition( num ) } 아닙니다!` 
