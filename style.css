@@ -20,19 +20,19 @@ body {
 input { 
 	display: none; 
 	opacity: 0; 
-    transition: .2s; 
- 
-    font-family: 'Noto Sans KR', sans-serif; 
-    font-size: 1.5rem; 
-    text-align: center; 
- 
-    width: 126px; 
-    height: 36px; 
-    margin: 0 auto 8px; 
-    border: 1px solid rgb(149, 149, 149); 
-    border-radius: 8px; 
-    line-height: 36px; 
-} 
+	transition: .2s; 
+	
+	font-family: 'Noto Sans KR', sans-serif; 
+	font-size: 1.5rem; 
+	text-align: center; 
+	
+	width: 126px; 
+	height: 36px; 
+	margin: 0 auto 8px; 
+	border: 1px solid rgb(149, 149, 149); 
+	border-radius: 8px; 
+	line-height: 36px; 
+	} 
  
 button { 
     font-family: 'Noto Sans KR', sans-serif; 
@@ -46,16 +46,16 @@ button {
     border: 0; 
     border-bottom: 4px solid rgb(1, 194, 182); 
     transition: .1s; 
-} 
+	} 
  
 button:hover { 
     background: rgb(1, 194, 182); 
     border-bottom: 3px solid rgb(1, 194, 182); 
-} 
+	} 
  
 button.deactivated { 
     opacity: .5; 
-} 
+	} 
  
  
 /* 1. Section */ 
@@ -70,7 +70,7 @@ section {
     border-radius: 24px; 
     border-bottom: 4px solid rgb(1, 194, 182); 
     text-align: center; 
-} 
+	} 
  
 @media screen and (min-width: 768px) { 
     section { 
@@ -78,7 +78,7 @@ section {
         transform: translate(-50%, -50%); 
         width: 576px; height: 544px; 
     } 
-} 
+	} 
  
 @media screen and (max-width: 767px) { 
     section { 
@@ -88,7 +88,7 @@ section {
         min-width: 528px; 
         min-height: 460px; 
     } 
-} 
+	} 
  
  
 /* 2. Gaming area */ 
@@ -98,17 +98,17 @@ section > h1 {
     font-size: 1.5rem; 
     line-height: 1.5rem; 
     margin: 0 0 16px; 
-} 
+	} 
  
 section > p { 
     margin: 0 0 16px; 
-} 
+	} 
  
 article { 
     display: none; 
     opacity: 0; 
     transition: .2s; 
-} 
+	} 
  
 #result { 
     width: 352px; 
@@ -122,7 +122,7 @@ article {
     font-size: 4rem; 
     font-weight: 900; 
     line-height: 136px; 
-} 
+	} 
  
 .result-up { color: rgb(255, 70, 70); } 
 .result-down { color: rgb(67, 58, 255); } 
@@ -134,8 +134,8 @@ article {
     position: absolute; 
     bottom: 0; left: 0; 
     width: 100%; 
-} 
+	} 
  
 #inputs > button { 
     width: 128px; 
-}
+	}
