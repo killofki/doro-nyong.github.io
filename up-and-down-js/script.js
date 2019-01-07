@@ -34,7 +34,7 @@ function fadeOut( sth ) {
 
 async function classDelay( obj, preCmd, ... delayCmds ) { 
 	classCmd( obj, preCmd ); 
-	for ( [ delay, timeoutCmd ] of delayCmds ) { 
+	for ( let [ delay, timeoutCmd ] of delayCmds ) { 
 		await sleep( delay ); 
 		classCmd( obj, timeoutCmd ); 
 		} 
