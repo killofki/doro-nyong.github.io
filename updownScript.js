@@ -19,31 +19,24 @@ function $( q ) { return document .querySelector( q ); }
 
 let initGameEventHandler = queryBtn. addEventListener( "click", btnHandler ); 
 
-function fadeIn(sth) { 
+function fadeIn( sth ) { 
 	classCmd( sth, { add : 'active' } ); 
 	setTimeout( q => classCmd( sth, { add, 'show '} ), 20 ); 
 	} 
 
-function fadeOut(sth) { 
+function fadeOut( sth ) { 
 	classCmd( sth, { remove : 'show' } ); 
 	setTimeout( q => classCmd( sth, { remove : 'active' } ), 200 ); 
 	} 
 
 function btnHandler() { 
-	if ( gameStart ) { 
-		guess = parseInt( inpt .value ); 
-		
-		if ( isNaN( guess ) || guess < 1 || guess > 100 ) { 
-			msg .innerHTML = "1부터 100까지의 숫자 중 하나를 입력해주세요!"; 
-			} 
-		else { 
-			inpt.value = ""; 
-			answering( guess ); 
-			} 
-		} 
-	else { 
-		initializeGame(); 
-		} 
+	  gameStart ? ( 
+		  guess = parseInt( inpt .value ) 
+		, ( isNaN( guess ) || guess < 1 || guess > 100 ) ? 
+			( msg .innerHTML = "1부터 100까지의 숫자 중 하나를 입력해주세요!" ) 
+		: ( inpt .value = "", answering( guess ) ) 
+	: initializeGame() 
+		; 
 	} 
 
 function initializeGame() { 
