@@ -5,7 +5,7 @@ let answer;
 let guess; 
 let turn = 0; 
 let gameStart = false; 
-let postposition; 
+let postposition; // ? 
 
 const queryBtn = $( '#query' ); 
 const msg = $( '#msg' ); 
@@ -60,8 +60,7 @@ function startGame() {
 	.forEach( ([ e, t ]) => e .innerHTML = t ) 
 		; 
 	
-	fadeIn( atc ); 
-	fadeIn( inpt ); 
+	[ atc, inpt ] .forEach( fadeIn ); 
 	gameStart = true; 
 	
 	inpt .onkeydown = ({ keyCode }) => { keyCode === 13 && btnHandler(); }; 
