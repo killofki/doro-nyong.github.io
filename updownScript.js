@@ -80,17 +80,17 @@ function answering( num ) {
 	if ( num === "" ) { 
 		return; 
 		} 
-	else { 
-		if ( answer === num ) { 
-			result( true, num ); 
-			} 
-		else if ( answer > num ) { 
-			result( 'up', num ); 
-			} 
-		else { 
-			result( 'down', num ); 
-			} 
+	// else { 
+	if ( answer === num ) { 
+		result( true, num ); 
 		} 
+	else if ( answer > num ) { 
+		result( 'up', num ); 
+		} 
+	else { 
+		result( 'down', num ); 
+		} 
+		// } 
 	} 
 
 function turnPass() { 
