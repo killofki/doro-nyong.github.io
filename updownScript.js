@@ -107,7 +107,7 @@ function result( judge, num ) {
 		
 		gameStart = false; 
 		objectsNhtml( objects 
-			, { queryBtn : '디시하기' } 
+			, { queryBtn : '다시하기' } 
 			, { msg : '게임을 다시 시작하려면 위의 버튼을 눌러주세요.' } 
 			); 
 		fadeOut( inpt ); 
