@@ -21,17 +21,19 @@ function $( q ) { return document .querySelector( q ); }
 let initGameEventHandler = queryBtn. addEventListener( "click", btnHandler ); 
 
 function fadeIn( sth ) { 
-	fadeTime( sth, { add : 'active' }, 20, { add : 'show' } ); 
+	fadeTime( sth, { add : 'active' }, [ 20, { add : 'show' } ] ); 
 	} 
 
 function fadeOut( sth ) { 
-	fadeTime( sth, { remove : 'show' }, 200, { remove : 'active' } ); 
+	fadeTime( sth, { remove : 'show' }, [ 200, { remove : 'active' } ] ); 
 	} 
 
-async function fadeTime( obj, preCmd, delay, timeoutCmd ) { 
+async function fadeTime( obj, preCmd, ... delayCmds ) { 
 	classCmd( sth, preCmd ); 
-	await sleep( delay ); 
-	classCmd( sth, timeoutCmd ); 
+	for ( [ delay, timeoutCmd ] of delayCmds ) { 
+		await sleep( delay ); 
+		classCmd( sth, timeoutCmd ); 
+		} 
 	} 
 
 function sleep( delay ) { return new Promise( res => setTimeout( q => res(), delay ) ); } 
