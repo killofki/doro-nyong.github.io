@@ -74,11 +74,8 @@ function classCmd( obj, cmdobj, ... ar ) {
 	} 
 
 function answering( num ) { 
-	if ( num === "" ) 
-		{ return; } 
-	
-	// else { 
-	  answer === num ? result( true, num ) 
+	  num === "" ? 'what?' 
+	: answer === num ? result( true, num ) 
 	: answer > num ? result( 'up', num ) 
 	: result( 'down', num ) 
 		; 
