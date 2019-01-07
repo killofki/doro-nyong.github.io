@@ -102,7 +102,7 @@ function result( judge, num ) {
 	if ( judge === true ) { 
 		rst .className = ""; 
 		rst .innerHTML = answer; 
-		msgBelow .innerHTML = "정답은 " + answer + "입니다!"; 
+		msgBelow .innerHTML = `정답은 ${ answer }입니다!`; 
 		
 		gameStart = false; 
 		queryBtn .innerHTML = "다시 하기"; 
@@ -111,9 +111,9 @@ function result( judge, num ) {
 		} 
 	else { 
 		turnPass(); 
-		rst .className = "result-" + judge; 
+		rst .className = `result-${ judge }`; 
 		rst .innerHTML = judge .toUpperCase(); 
-		msgBelow .innerHTML = guess + choosePostposition( num ) + " 아닙니다!" 
+		msgBelow .innerHTML = `${ guess }${ choosePostposition( num ) } 아닙니다!` 
 		} 
 	} 
 
