@@ -135,6 +135,6 @@ function choosePostposition( number ) {
 	return [ 2, 4, 5, 9 ] .some( n => n === noun ) ? '가' : '이'; 
 	} 
 
-// src from https://doro-nyong.github.io/up-and-down-js/ 
+// original from https://doro-nyong.github.io/up-and-down-js/ 
 /// 
 } 
