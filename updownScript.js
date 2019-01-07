@@ -33,10 +33,10 @@ function fadeOut( sth ) {
 	} 
 
 async function fadeTime( obj, preCmd, ... delayCmds ) { 
-	classCmd( sth, preCmd ); 
+	classCmd( obj, preCmd ); 
 	for ( [ delay, timeoutCmd ] of delayCmds ) { 
 		await sleep( delay ); 
-		classCmd( sth, timeoutCmd ); 
+		classCmd( obj, timeoutCmd ); 
 		} 
 	} 
 
