@@ -99,7 +99,7 @@ function turnPass() {
 
 function result( judge, num ) { 
 	if ( judge === true ) { 
-		Object .assign( rst
+		Object .assign( rst 
 			, { className : '' } 
 			, { innerHTML : answer } 
 			); 
@@ -114,7 +114,7 @@ function result( judge, num ) {
 		} 
 	else { 
 		turnPass(); 
-		Object .assign( rst
+		Object .assign( rst 
 			, { className : `result-${ judge }` } 
 			, { innerHTML : judge .toUpperCase() } 
 			); 
