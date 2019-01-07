@@ -94,8 +94,8 @@ function answering( num ) {
 	} 
 
 function turnPass() { 
-	turn++; 
-	msgAbove .innerHTML = turn .toString() + "번째 시도입니다."; 
+	turn += 1; 
+	msgAbove .innerHTML = `${ turn }번째 시도입니다.`; 
 	} 
 
 function result( judge, num ) { 
