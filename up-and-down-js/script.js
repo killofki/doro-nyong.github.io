@@ -100,6 +100,7 @@ function turnPass() {
 	} 
 
 function result( judge, num ) { 
+	turnPass(); // try with judge 
 	if ( judge === true ) { 
 		rst .className = ''; 
 		objectsNhtml( objects 
@@ -115,7 +116,6 @@ function result( judge, num ) {
 		fadeOut( inpt ); 
 		} 
 	else { 
-		turnPass(); 
 		rst .className = `result-${ judge }`; 
 		objectsNhtml( objects 
 			, { rst : judge .toUpperCase() } 
