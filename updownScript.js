@@ -48,6 +48,7 @@ function btnHandler() {
 		, ( isNaN( guess ) || guess < 1 || guess > 100 ) ? 
 			objectsNhtml( objects, { msg : "1부터 100까지의 숫자 중 하나를 입력해주세요!" } ) 
 		: ( inpt .value = "", answering( guess ) ) 
+		) 
 	: initializeGame() 
 		; 
 	} 
