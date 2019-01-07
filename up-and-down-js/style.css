@@ -1,3 +1,19 @@
+/************************************\ 
+| JavaScript로 만드는 Up and Down CSS |
+|                       - Doro-nyong |
+\************************************/
+
+/* 0. Basic Settings */
+
+body {
+    position: relative;
+    font-family: 'Noto Sans KR', sans-serif;
+    background: rgb(76, 241, 188);
+    color: #222;
+    margin: 0; padding: 0;
+    height: 100vh;                                  
+}
+
 .active {
     display: block;
 }
@@ -6,29 +22,81 @@
     opacity: 1;
 }
 
-body {
-    display: flex;
+input {
+    display: none;
+    opacity: 0;
+    transition: .2s;
+
     font-family: 'Noto Sans KR', sans-serif;
-    background: rgb(76, 241, 188);
-    color: #222;
-    margin: 0; padding: 0;
-    height: 100vh;
-    vertical-align: center;                                  
+    font-size: 1.5rem;
+    text-align: center;
+
+    width: 126px;
+    height: 36px;
+    margin: 0 auto 8px;
+    border: 1px solid rgb(149, 149, 149);
+    border-radius: 8px;
+    line-height: 36px;
 }
 
-section {
-    position: relative;
-    background: white;
+button {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1rem;
+    padding: 0;
+    height: 48px;
+    line-height: 44px;
 
-    margin: auto;
+    background: rgb(76, 241, 188);
+    border-radius: 8px;
+    border: 0;
+    border-bottom: 4px solid rgb(1, 194, 182); 
+    transition: .1s;
+}
+
+button:hover {
+    background: rgb(1, 194, 182);
+    border-bottom: 3px solid rgb(1, 194, 182);            
+}     
+
+button.deactivated {
+    opacity: .5;
+}
+
+
+/* 1. Section */
+
+section {
+    box-sizing: border-box;
+
+    position: absolute;
+    background: white;
     padding: 24px;
-    width: 576px;
-    height: 544px;            
-                                                    
+                                       
     border-radius: 24px;
     border-bottom: 4px solid rgb(1, 194, 182);
     text-align: center;
 }
+
+@media screen and (min-width: 768px) {
+    section {
+        top: 50vh; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 576px; height: 544px; 
+    }
+}
+
+@media screen and (max-width: 767px) {
+    section {
+        top: 96px; bottom: 96px;
+        left: 24px; right: 24px;
+
+        min-width: 528px;
+        min-height: 460px;
+    }
+}
+
+
+/* 2. Gaming area */
 
 section > h1 {
     font-weight: 900;
@@ -61,13 +129,11 @@ article {
     line-height: 136px;                        
 }
 
-.result-up {
-    color: rgb(255, 70, 70);
-}
+.result-up { color: rgb(255, 70, 70); }
+.result-down { color: rgb(67, 58, 255); }
 
-.result-down {
-    color: rgb(67, 58, 255);
-}
+
+/* 3. Controller area */
 
 #inputs {
     position: absolute;
@@ -75,46 +141,8 @@ article {
     width: 100%;
 }
 
-input {
-    display: none;
-    opacity: 0;
-    transition: .2s;
 
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 1.5rem;
-    text-align: center;
-
-    width: 126px;
-    height: 36px;
-    margin: 0 auto 8px;
-    border: 1px solid rgb(149, 149, 149);
-    border-radius: 8px;
-    line-height: 36px;
-}
-
-button {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 1rem;
-    padding: 0;
-
-    background: rgb(76, 241, 188);
-    border-radius: 8px;
-    border: 0;
-    border-bottom: 4px solid rgb(1, 194, 182); 
-    transition: .1s;
-}
-
-button:hover {
-    background: rgb(19, 199, 142);
-    border-bottom: 3px solid rgb(1, 194, 182);            
-}     
-
-button.deactivated {
-    opacity: .5;
-}
 
 #inputs > button {
     width: 128px;
-    height: 48px;
-    line-height: 44px;
 }
