@@ -14,6 +14,7 @@ const inpt = $( 'input' );
 const msgAbove = $( '#message-above' ); 
 const rst = $( '#result' ); 
 const msgBelow = $( '#message-below' ); 
+const objects = { queryBtn, msg, stc, inpt, msgAbove, rst, msgBelow }; 
 
 function $( q ) { return document .querySelector( q ); } 
 
@@ -51,7 +52,7 @@ function initializeGame() {
 
 function startGame() { 
 	classCmd( queryBtn, { remove : 'deactivated' }, '추측하기' ); 
-	objectsNhtml( { msg, msgAbove, msgBelow, rst }, { 
+	objectsNhtml( objects, { 
 		  msg : "텍스트 창에 추측한 숫자를 입력하고 버튼을 눌려주세요." 
 		, msgAbove : "1번째 시도입니다." 
 		, msgBelow : "" 
@@ -93,7 +94,7 @@ function result( judge, num ) {
 		msgBelow .innerHTML = `정답은 ${ answer }입니다!`; 
 		
 		gameStart = false; 
-		objectsNhtml( { queryBtn, msg } 
+		objectsNhtml( objects 
 			, { queryBtn : '디시하기' } 
 			, { msg : '게임을 다시 시작하려면 위의 버튼을 눌러주세요.' } 
 			); 
