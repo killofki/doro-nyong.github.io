@@ -70,9 +70,9 @@ function startGame() {
 	gameStart = true; 
 	
 	inpt .onkeydown = ({ keyCode }) => { 
-		if ( keyCode === 13 ) { 
-			btnHandler(); 
-			} 
+		   keyCode === 13 
+		&& btnHandler() 
+			; 
 		}; 
 	} 
 
