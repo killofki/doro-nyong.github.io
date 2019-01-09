@@ -64,8 +64,9 @@ function initializeGame() {
 		, msg : "1부터 100까지의 숫자 중 하나를 생각하는 중입니다…" 
 		}); 
 	
-	answer = Math .floor( Math .random() * 100 ) + 1; 
-	setTimeout( startGame, 1000 ); 
+	doNdelay( q => answer = Math .floor( Math .random() * 100 ) + 1 
+		, [ 1000, startGame ] 
+		); 
 	} 
 
 function startGame() { 
