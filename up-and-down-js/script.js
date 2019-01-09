@@ -30,6 +30,36 @@ function btnHandler() {
 		; 
 	} 
 
+function initializeGame() { 
+	fadeOut( atc ); 
+	turn = 0; 
+	queryBtn .classList .add( 'deactivated' ); 
+	objectsNhtml({ 
+		  queryBtn : '기다리세요!' 
+		, msg : "1부터 100까지의 숫자 중 하나를 생각하는 중입니다…" 
+		}); 
+	
+	doNdelay( q => answer = Math .floor( Math .random() * 100 ) + 1 
+		, [ 1000, startGame ] 
+		); 
+	} 
+
+function startGame() { 
+	queryBtn .classList .remove( 'deactivated' ); 
+	objectsNhtml({ 
+		  queryBtn : '추측하기' 
+		, msg : "텍스트 창에 추측한 숫자를 입력하고 버튼을 눌려주세요." 
+		, msgAbove : "1번째 시도입니다." 
+		, msgBelow : "" 
+		, rst : "？" 
+		}); 
+	
+	[ atc, inpt ] .forEach( fadeIn ); 
+	gameStart = true; 
+	
+	inpt .onkeydown = ({ keyCode }) => { keyCode === 13 && btnHandler(); }; 
+	} 
+
 function answering( num ) { 
 	  num === "" ? 'what?' // throw error..? 
 	: answer === num ? result( true, num ) 
@@ -63,7 +93,15 @@ function result( judge, num ) {
 		} 
 	} 
 
-function $( q ) { return document .querySelector( q ); } 
+function turnPass() { 
+	turn += 1; 
+	objectsNhtml({ msgAbove : `${ turn }번째 시도입니다.` }); 
+	} 
+
+function choosePostposition( number ) { 
+	let noun = `${ parseInt( number ) }` .slice( -1 ); 
+	return [ ... '2459' ] .some( n => n === noun ) ? '가' : '이'; 
+	} 
 
 function fadeIn( sth ) { 
 	let { classList } = sth; 
@@ -89,51 +127,13 @@ async function doNdelay( F, ... delayFs ) {
 
 function sleep( delay ) { return new Promise( res => setTimeout( q => res(), delay ) ); } 
 
-function initializeGame() { 
-	fadeOut( atc ); 
-	turn = 0; 
-	queryBtn .classList .add( 'deactivated' ); 
-	objectsNhtml({ 
-		  queryBtn : '기다리세요!' 
-		, msg : "1부터 100까지의 숫자 중 하나를 생각하는 중입니다…" 
-		}); 
-	
-	doNdelay( q => answer = Math .floor( Math .random() * 100 ) + 1 
-		, [ 1000, startGame ] 
-		); 
-	} 
-
-function startGame() { 
-	queryBtn .classList .remove( 'deactivated' ); 
-	objectsNhtml({ 
-		  queryBtn : '추측하기' 
-		, msg : "텍스트 창에 추측한 숫자를 입력하고 버튼을 눌려주세요." 
-		, msgAbove : "1번째 시도입니다." 
-		, msgBelow : "" 
-		, rst : "？" 
-		}); 
-	
-	[ atc, inpt ] .forEach( fadeIn ); 
-	gameStart = true; 
-	
-	inpt .onkeydown = ({ keyCode }) => { keyCode === 13 && btnHandler(); }; 
-	} 
-
-function turnPass() { 
-	turn += 1; 
-	objectsNhtml({ msgAbove : `${ turn }번째 시도입니다.` }); 
-	} 
-
 function objectsNhtml( ... orders ) { 
 	orders .forEach( cmdobj => Object .keys( cmdobj ) .forEach( p => 
 		objects[ p ] .innerHTML = cmdobj[ p ] 
 		) ); 
 	} 
 
-function choosePostposition( number ) { 
-	let noun = `${ parseInt( number ) }` .slice( -1 ); 
-	return [ ... '2459' ] .some( n => n === noun ) ? '가' : '이'; 
-	} 
+function $( q ) { return document .querySelector( q ); } 
 
 // original from https://doro-nyong.github.io/up-and-down-js/ 
 /// 
