@@ -21,21 +21,17 @@ function $( q ) { return document .querySelector( q ); }
 let initGameEventHandler = queryBtn .addEventListener( "click", btnHandler ); 
 
 function fadeIn( sth ) { 
-	classDelay( sth, { add : 'active' } 
-		, [ 20, { add : 'show' } ] 
+	let { classList } = sth; 
+	doNdelay( q => classList .add( 'active' ) 
+		, [ 20, q => classList .add( 'show' ) ] 
 		); 
 	} 
 
 function fadeOut( sth ) { 
-	classDelay( sth, { remove : 'show' } 
-		, [ 200, { remove : 'active' } ] 
+	let { classList } = sth; 
+	doNdelay( q => classList .remove( 'show' ) 
+		, [ 200, q => classList .remove( 'active' ) ] 
 		); 
-	} 
-
-function classDelay( obj, preCmd, ... delayCmds ) { 
-	doNdelay( q => classCmd( obj, preCmd ), ... delayCmds .map( ([ delay, timeoutCmd ]) => 
-		[ delay, q => classCmd( obj, timeoutCmd ) ] 
-		) ); 
 	} 
 
 async function doNdelay( F, ... delayFs ) { 
@@ -62,7 +58,7 @@ function btnHandler() {
 function initializeGame() { 
 	fadeOut( atc ); 
 	turn = 0; 
-	classCmd( queryBtn, { add : 'deactivated' } ); 
+	queryBtn .classList .add( 'deactivated' ); 
 	objectsNhtml( objects, { 
 		  queryBtn : '기다리세요!' 
 		, msg : "1부터 100까지의 숫자 중 하나를 생각하는 중입니다…" 
@@ -73,7 +69,7 @@ function initializeGame() {
 	} 
 
 function startGame() { 
-	classCmd( queryBtn, { remove : 'deactivated' } ); 
+	queryBtn .classList .remove( 'deactivated' ); 
 	objectsNhtml( objects, { 
 		  queryBtn : '추측하기' 
 		, msg : "텍스트 창에 추측한 숫자를 입력하고 버튼을 눌려주세요." 
@@ -87,10 +83,6 @@ function startGame() {
 	
 	inpt .onkeydown = ({ keyCode }) => { keyCode === 13 && btnHandler(); }; 
 	} 
-
-function classCmd( obj, cmdobj ) { Object .keys( cmdobj ) .forEach( p => 
-	obj .classList[ p ]( cmdobj[ p ] ) 
-	); } 
 
 function answering( num ) { 
 	  num === "" ? 'what?' // throw error..? 
