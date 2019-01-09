@@ -14,6 +14,7 @@ const inpt = $( 'input' );
 const msgAbove = $( '#message-above' ); 
 const rst = $( '#result' ); 
 const msgBelow = $( '#message-below' ); 
+
 const objects = { queryBtn, msg, atc, inpt, msgAbove, rst, msgBelow }; 
 
 function $( q ) { return document .querySelector( q ); } 
