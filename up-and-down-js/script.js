@@ -100,7 +100,7 @@ function turnPass() {
 function result( judge, num ) { 
 	turnPass(); // try with judge 
 	if ( judge === true ) { 
-		rst .className = ''; 
+		classNameRaw( rst ) ``; 
 		objectsNhtml({ 
 			  rst : answer 
 			, msgBelow : `정답은 ${ answer }입니다!` 
@@ -114,7 +114,7 @@ function result( judge, num ) {
 		fadeOut( inpt ); 
 		} 
 	else { 
-		rst .className = `result-${ judge }`; 
+		classNameRaw( rst ) `result-${ judge }`; 
 		objectsNhtml({ 
 			  rst : judge .toUpperCase() 
 			, msgBelow : `${ guess }${ choosePostposition( num ) } 아닙니다!` 
@@ -131,6 +131,10 @@ function objectsNhtml( ... orders ) {
 function choosePostposition( number ) { 
 	let noun = parseInt( number ) % 10; 
 	return [ 2, 4, 5, 9 ] .some( n => n === noun ) ? '가' : '이'; 
+	} 
+
+function classNameRaw( element ) { 
+	return ( ... rawcmd ) => element .className = rawcmd .length > 1 ? String .raw( ... rawcmd ) : rawcmd[ 0 ]; 
 	} 
 
 // original from https://doro-nyong.github.io/up-and-down-js/ 
