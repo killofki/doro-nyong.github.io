@@ -55,6 +55,7 @@ function startGame() {
 
 function receivingTransmission() { 
 	guess = parseInt( inpt .value ); 
+	turnPass(); // received 
 	  ( ! isNaN( guess ) && guess >= 1 && guess <= 100 ) ? ( inpt .value = '', answering( guess ) ) 
 	: objectsNhtml({ msg : "1부터 100까지의 숫자 중 하나를 입력해주세요!" }) 
 		; 
@@ -66,7 +67,6 @@ function answering( num ) { result(
 	); } 
 
 function result( judge, num ) { 
-	turnPass(); // try with judge 
 	if ( judge === true ) { 
 		rst .className = ''; 
 		objectsNhtml({ 
