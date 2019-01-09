@@ -55,19 +55,15 @@ function startGame() {
 
 function checkCorrect() { 
 	guess = parseInt( inpt .value ); 
-	  ( ! isNaN( guess ) && guess >= 1 && guess <= 100 ) ? 
-		( inpt .value = "", answering( guess ) ) 
+	  ( ! isNaN( guess ) && guess >= 1 && guess <= 100 ) ? ( inpt .value = '', answering( guess ) ) 
 	: objectsNhtml({ msg : "1부터 100까지의 숫자 중 하나를 입력해주세요!" }) 
 		; 
 	} 
 
-function answering( num ) { 
-	  num === "" ? 'what?' // throw error..? 
-	: answer === num ? result( true, num ) 
-	: answer > num ? result( 'up', num ) 
-	: result( 'down', num ) 
-		; 
-	} 
+function answering( num ) { result( 
+	  [ 'up', true, 'down' ] [ Math .sign( guess - answer ) + 1 ] 
+	, guess 
+	); } 
 
 function result( judge, num ) { 
 	turnPass(); // try with judge 
