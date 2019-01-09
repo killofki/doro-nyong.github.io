@@ -48,7 +48,7 @@ function btnHandler() {
 	  gameStart ? ( 
 		  guess = parseInt( inpt .value ) 
 		, ( isNaN( guess ) || guess < 1 || guess > 100 ) ? 
-			objectsNhtml( objects, { msg : "1부터 100까지의 숫자 중 하나를 입력해주세요!" } ) 
+			objectsNhtml({ msg : "1부터 100까지의 숫자 중 하나를 입력해주세요!" }) 
 		: ( inpt .value = "", answering( guess ) ) 
 		) 
 	: initializeGame() 
@@ -59,10 +59,10 @@ function initializeGame() {
 	fadeOut( atc ); 
 	turn = 0; 
 	queryBtn .classList .add( 'deactivated' ); 
-	objectsNhtml( objects, { 
+	objectsNhtml({ 
 		  queryBtn : '기다리세요!' 
 		, msg : "1부터 100까지의 숫자 중 하나를 생각하는 중입니다…" 
-		} ); 
+		}); 
 	
 	answer = Math .floor( Math .random() * 100 ) + 1; 
 	setTimeout( startGame, 1000 ); 
@@ -70,13 +70,13 @@ function initializeGame() {
 
 function startGame() { 
 	queryBtn .classList .remove( 'deactivated' ); 
-	objectsNhtml( objects, { 
+	objectsNhtml({ 
 		  queryBtn : '추측하기' 
 		, msg : "텍스트 창에 추측한 숫자를 입력하고 버튼을 눌려주세요." 
 		, msgAbove : "1번째 시도입니다." 
 		, msgBelow : "" 
 		, rst : "？" 
-		} ); 
+		}); 
 	
 	[ atc, inpt ] .forEach( fadeIn ); 
 	gameStart = true; 
@@ -94,37 +94,37 @@ function answering( num ) {
 
 function turnPass() { 
 	turn += 1; 
-	objectsNhtml( objects, { msgAbove : `${ turn }번째 시도입니다.` } ); 
+	objectsNhtml({ msgAbove : `${ turn }번째 시도입니다.` }); 
 	} 
 
 function result( judge, num ) { 
 	turnPass(); // try with judge 
 	if ( judge === true ) { 
 		rst .className = ''; 
-		objectsNhtml( objects 
-			, { rst : answer } 
-			, { msgBelow : `정답은 ${ answer }입니다!` } 
-			); 
+		objectsNhtml({ 
+			  rst : answer 
+			, msgBelow : `정답은 ${ answer }입니다!` 
+			}); 
 		
 		gameStart = false; 
-		objectsNhtml( objects 
-			, { queryBtn : '다시 하기' } 
-			, { msg : '게임을 다시 시작하려면 위의 버튼을 눌러주세요.' } 
-			); 
+		objectsNhtml({ 
+			  queryBtn : '다시 하기' 
+			, msg : '게임을 다시 시작하려면 위의 버튼을 눌러주세요.' 
+			}); 
 		fadeOut( inpt ); 
 		} 
 	else { 
 		rst .className = `result-${ judge }`; 
-		objectsNhtml( objects 
-			, { rst : judge .toUpperCase() } 
-			, { msgBelow : `${ guess }${ choosePostposition( num ) } 아닙니다!` } 
-			);  
+		objectsNhtml({ 
+			  rst : judge .toUpperCase() 
+			, msgBelow : `${ guess }${ choosePostposition( num ) } 아닙니다!` 
+			});  
 		} 
 	} 
 
-function objectsNhtml( objs, ... orders ) { 
+function objectsNhtml( ... orders ) { 
 	orders .forEach( cmdobj => Object .keys( cmdobj ) .forEach( p => 
-		objs[ p ] .innerHTML = cmdobj[ p ] 
+		objects[ p ] .innerHTML = cmdobj[ p ] 
 		) ); 
 	} 
 
