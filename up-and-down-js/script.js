@@ -130,8 +130,8 @@ function objectsNhtml( ... orders ) {
 	} 
 
 function choosePostposition( number ) { 
-	let noun = parseInt( number ) % 10; 
-	return [ 2, 4, 5, 9 ] .some( n => n === noun ) ? '가' : '이'; 
+	let noun = `${ parseInt( number ) }` .slice( -1 ); 
+	return [ ... '2459' ] .some( n => n === noun ) ? '가' : '이'; 
 	} 
 
 // original from https://doro-nyong.github.io/up-and-down-js/ 
