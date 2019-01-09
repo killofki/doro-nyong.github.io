@@ -17,9 +17,9 @@ const msgBelow = $( '#message-below' );
 
 const objects = { queryBtn, msg, atc, inpt, msgAbove, rst, msgBelow }; 
 
-function $( q ) { return document .querySelector( q ); } 
-
 let initGameEventHandler = queryBtn .addEventListener( "click", btnHandler ); 
+
+function $( q ) { return document .querySelector( q ); } 
 
 function fadeIn( sth ) { 
 	let { classList } = sth; 
