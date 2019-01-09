@@ -55,7 +55,7 @@ function receivingTransmission() {
 	guess = parseInt( inpt .value ); 
 	  ( ! isNaN( guess ) && guess >= 1 && guess <= 100 ) ? ( 
 		  inpt .value = '' 
-		, turnPass() // tried when receive answer 
+		, turnPass() // when success receiving 
 		, result( guess ) 
 		) 
 	: objectsNhtml({ msg : "1부터 100까지의 숫자 중 하나를 입력해주세요!" }) 
