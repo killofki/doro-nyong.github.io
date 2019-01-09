@@ -61,8 +61,8 @@ function receivingTransmission() {
 	} 
 
 function answering( num ) { result( 
-	  [ 'up', true, 'down' ] [ Math .sign( guess - answer ) + 1 ] 
-	, guess 
+	  [ 'up', true, 'down' ] [ Math .sign( num - answer ) + 1 ] 
+	, num 
 	); } 
 
 function result( judge, num ) { 
