@@ -17,7 +17,51 @@ const msgBelow = $( '#message-below' );
 
 const objects = { queryBtn, msg, atc, inpt, msgAbove, rst, msgBelow }; 
 
-let initGameEventHandler = queryBtn .addEventListener( "click", btnHandler ); 
+let initGameEventHandler = queryBtn .addEventListener( "click", btnHandler ); // just naming.. 
+
+function btnHandler() { 
+	  gameStart ? ( 
+		  guess = parseInt( inpt .value ) 
+		, ( isNaN( guess ) || guess < 1 || guess > 100 ) ? 
+			objectsNhtml({ msg : "1부터 100까지의 숫자 중 하나를 입력해주세요!" }) 
+		: ( inpt .value = "", answering( guess ) ) 
+		) 
+	: initializeGame() 
+		; 
+	} 
+
+function answering( num ) { 
+	  num === "" ? 'what?' // throw error..? 
+	: answer === num ? result( true, num ) 
+	: answer > num ? result( 'up', num ) 
+	: result( 'down', num ) 
+		; 
+	} 
+
+function result( judge, num ) { 
+	turnPass(); // try with judge 
+	if ( judge === true ) { 
+		rst .className = ''; 
+		objectsNhtml({ 
+			  rst : answer 
+			, msgBelow : `정답은 ${ answer }입니다!` 
+			}); 
+		
+		gameStart = false; 
+		objectsNhtml({ 
+			  queryBtn : '다시 하기' 
+			, msg : '게임을 다시 시작하려면 위의 버튼을 눌러주세요.' 
+			}); 
+		fadeOut( inpt ); 
+		} 
+	else { 
+		rst .className = `result-${ judge }`; 
+		objectsNhtml({ 
+			  rst : judge .toUpperCase() 
+			, msgBelow : `${ guess }${ choosePostposition( num ) } 아닙니다!` 
+			});  
+		} 
+	} 
 
 function $( q ) { return document .querySelector( q ); } 
 
@@ -44,17 +88,6 @@ async function doNdelay( F, ... delayFs ) {
 	} 
 
 function sleep( delay ) { return new Promise( res => setTimeout( q => res(), delay ) ); } 
-
-function btnHandler() { 
-	  gameStart ? ( 
-		  guess = parseInt( inpt .value ) 
-		, ( isNaN( guess ) || guess < 1 || guess > 100 ) ? 
-			objectsNhtml({ msg : "1부터 100까지의 숫자 중 하나를 입력해주세요!" }) 
-		: ( inpt .value = "", answering( guess ) ) 
-		) 
-	: initializeGame() 
-		; 
-	} 
 
 function initializeGame() { 
 	fadeOut( atc ); 
@@ -86,42 +119,9 @@ function startGame() {
 	inpt .onkeydown = ({ keyCode }) => { keyCode === 13 && btnHandler(); }; 
 	} 
 
-function answering( num ) { 
-	  num === "" ? 'what?' // throw error..? 
-	: answer === num ? result( true, num ) 
-	: answer > num ? result( 'up', num ) 
-	: result( 'down', num ) 
-		; 
-	} 
-
 function turnPass() { 
 	turn += 1; 
 	objectsNhtml({ msgAbove : `${ turn }번째 시도입니다.` }); 
-	} 
-
-function result( judge, num ) { 
-	turnPass(); // try with judge 
-	if ( judge === true ) { 
-		rst .className = ''; 
-		objectsNhtml({ 
-			  rst : answer 
-			, msgBelow : `정답은 ${ answer }입니다!` 
-			}); 
-		
-		gameStart = false; 
-		objectsNhtml({ 
-			  queryBtn : '다시 하기' 
-			, msg : '게임을 다시 시작하려면 위의 버튼을 눌러주세요.' 
-			}); 
-		fadeOut( inpt ); 
-		} 
-	else { 
-		rst .className = `result-${ judge }`; 
-		objectsNhtml({ 
-			  rst : judge .toUpperCase() 
-			, msgBelow : `${ guess }${ choosePostposition( num ) } 아닙니다!` 
-			});  
-		} 
 	} 
 
 function objectsNhtml( ... orders ) { 
