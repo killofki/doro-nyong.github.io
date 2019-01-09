@@ -19,9 +19,7 @@ const objects = { queryBtn, msg, atc, inpt, msgAbove, rst, msgBelow };
 
 let initGameEventHandler = queryBtn .addEventListener( "click", btnHandler ); // just naming.. 
 
-function btnHandler() { 
-	gameStart ? receivingTransmission() : initializeGame(); 
-	} 
+function btnHandler() { gameStart ? receivingTransmission() : initializeGame(); } 
 
 function initializeGame() { 
 	fadeOut( atc ); 
