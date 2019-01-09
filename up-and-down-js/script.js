@@ -100,7 +100,7 @@ function turnPass() {
 function result( judge, num ) { 
 	turnPass(); // try with judge 
 	if ( judge === true ) { 
-		classNameRaw( rst ) ``; 
+		className( rst ) ``; 
 		objectsNhtml({ 
 			  rst : answer 
 			, msgBelow : `정답은 ${ answer }입니다!` 
@@ -114,7 +114,7 @@ function result( judge, num ) {
 		fadeOut( inpt ); 
 		} 
 	else { 
-		classNameRaw( rst ) `result-${ judge }`; 
+		className( rst ) `result-${ judge }`; 
 		objectsNhtml({ 
 			  rst : judge .toUpperCase() 
 			, msgBelow : `${ guess }${ choosePostposition( num ) } 아닙니다!` 
@@ -133,7 +133,7 @@ function choosePostposition( number ) {
 	return [ 2, 4, 5, 9 ] .some( n => n === noun ) ? '가' : '이'; 
 	} 
 
-function classNameRaw( element ) { 
+function className( element ) { 
 	return ( ... rawcmd ) => element .className = rawcmd .length > 1 ? String .raw( ... rawcmd ) : rawcmd[ 0 ]; 
 	} 
 
