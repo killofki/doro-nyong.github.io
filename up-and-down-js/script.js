@@ -55,16 +55,18 @@ function startGame() {
 
 function receivingTransmission() { 
 	guess = parseInt( inpt .value ); 
-	turnPass(); // received 
 	  ( ! isNaN( guess ) && guess >= 1 && guess <= 100 ) ? ( inpt .value = '', answering( guess ) ) 
 	: objectsNhtml({ msg : "1부터 100까지의 숫자 중 하나를 입력해주세요!" }) 
 		; 
 	} 
 
-function answering( num ) { result( 
-	  [ 'up', true, 'down' ] [ Math .sign( num - answer ) + 1 ] 
-	, num 
-	); } 
+function answering( num ) { 
+	turnPass(); // tried when receive answer 
+	result( 
+		  [ 'up', true, 'down' ] [ Math .sign( num - answer ) + 1 ] 
+		, num 
+		); 
+	} 
 
 function result( judge, num ) { 
 	if ( judge === true ) { 
