@@ -58,13 +58,13 @@ function receivingTransmission() {
 	  ( ! isNaN( guess ) && guess >= 1 && guess <= 100 ) ? ( 
 		  inpt .value = '' 
 		, turnPass() // tried when receive answer 
-		, result( answering( guess ), guess ) 
+		, result( isAnswerCorrect( guess ), guess ) 
 		) 
 	: objectsNhtml({ msg : "1부터 100까지의 숫자 중 하나를 입력해주세요!" }) 
 		; 
 	} 
 
-function answering( num ) { return [ 'up', true, 'down' ] [ Math .sign( num - answer ) + 1 ]; } 
+function isAnswerCorrect( num ) { return [ 'up', true, 'down' ] [ Math .sign( num - answer ) + 1 ]; } 
 
 function turnPass() { 
 	turn += 1; 
