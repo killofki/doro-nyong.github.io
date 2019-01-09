@@ -56,20 +56,19 @@ function receivingTransmission() {
 	  ( ! isNaN( guess ) && guess >= 1 && guess <= 100 ) ? ( 
 		  inpt .value = '' 
 		, turnPass() // tried when receive answer 
-		, result( isOpenResult( guess ), guess ) 
+		, result( guess ) 
 		) 
 	: objectsNhtml({ msg : "1부터 100까지의 숫자 중 하나를 입력해주세요!" }) 
 		; 
 	} 
-
-function isOpenResult( num ) { return [ 'up', true, 'down' ][ Math .sign( num - answer ) + 1 ]; } 
 
 function turnPass() { 
 	turn += 1; 
 	objectsNhtml({ msgAbove : `${ turn }번째 시도입니다.` }); 
 	} 
 
-function result( judge, num ) { 
+function result( num ) { 
+	let judge = isOpenResult( num ); 
 	if ( judge === true ) { 
 		rst .className = ''; 
 		objectsNhtml({ 
@@ -92,6 +91,8 @@ function result( judge, num ) {
 			});  
 		} 
 	} 
+
+function isOpenResult( num ) { return [ 'up', true, 'down' ][ Math .sign( num - answer ) + 1 ]; } 
 
 function choosePostposition( number ) { 
 	let noun = `${ parseInt( number ) }` .slice( -1 ); 
