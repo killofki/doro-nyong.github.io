@@ -64,7 +64,7 @@ function receivingTransmission() {
 		; 
 	} 
 
-function isAnswerCorrect( num ) { return [ 'up', true, 'down' ] [ Math .sign( num - answer ) + 1 ]; } 
+function isAnswerCorrect( num ) { return [ 'up', true, 'down' ][ Math .sign( num - answer ) + 1 ]; } 
 
 function turnPass() { 
 	turn += 1; 
