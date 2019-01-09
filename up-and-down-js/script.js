@@ -117,6 +117,12 @@ function fadeOut( sth ) {
 		); 
 	} 
 
+function objectsNhtml( ... orders ) { 
+	orders .forEach( cmdobj => Object .keys( cmdobj ) .forEach( p => 
+		objects[ p ] .innerHTML = cmdobj[ p ] 
+		) ); 
+	} 
+
 async function doNdelay( F, ... delayFs ) { 
 	F(); 
 	for ( let [ delay, delayF ] of delayFs ) { 
@@ -126,12 +132,6 @@ async function doNdelay( F, ... delayFs ) {
 	} 
 
 function sleep( delay ) { return new Promise( res => setTimeout( q => res(), delay ) ); } 
-
-function objectsNhtml( ... orders ) { 
-	orders .forEach( cmdobj => Object .keys( cmdobj ) .forEach( p => 
-		objects[ p ] .innerHTML = cmdobj[ p ] 
-		) ); 
-	} 
 
 function $( q ) { return document .querySelector( q ); } 
 
