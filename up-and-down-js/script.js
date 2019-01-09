@@ -32,11 +32,17 @@ function fadeOut( sth ) {
 		); 
 	} 
 
-async function classDelay( obj, preCmd, ... delayCmds ) { 
-	classCmd( obj, preCmd ); 
-	for ( let [ delay, timeoutCmd ] of delayCmds ) { 
+function classDelay( obj, preCmd, ... delayCmds ) { 
+	doNdelay( q => classCmd( obj, preCmd ), ... delayCmds .map( ([ delay, timeoutCmd ]) => 
+		[ delay, q => classCmd( obj, timeoutCmd ) ] 
+		) ); 
+	} 
+
+async function doNdelay( F, ... delayFs ) { 
+	F(); 
+	for ( let [ delay, delayF ] of delayFs ) { 
 		await sleep( delay ); 
-		classCmd( obj, timeoutCmd ); 
+		delayF(); 
 		} 
 	} 
 
